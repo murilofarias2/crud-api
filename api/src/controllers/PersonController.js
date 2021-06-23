@@ -13,7 +13,6 @@ module.exports = {
     async storePerson(req, res){
         const { name, mail, phone, cpf, age } = req.body;
         const errors = validate(req.body)
-        console.log(errors.length)
         if(!errors.length){
             const personExists = await Person.findOne({cpf})
 

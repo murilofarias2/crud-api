@@ -1,6 +1,7 @@
 const express = require('express')
 const database = require('./config/database')
 const routes = require('./routes')
+const protected = require('./controllers/authController')
 const cors = require('cors')
 
 
@@ -13,12 +14,13 @@ server.use((req,res,next) => {
     server.use(cors)
     next()
 })
-server.use(express.json())
+server.use(express.json());
+server.use(protected)
 server.use(routes)
 
 
 
 
-server.listen(3333)
+server.listen(3333, () => {console.log('Servidor iniciado')})
 
 
