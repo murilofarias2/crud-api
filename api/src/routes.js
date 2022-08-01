@@ -6,7 +6,10 @@ const authMiddleware = require('./middlewares/auth');
 
 
 const PersonController = require('./controllers/PersonController');
+const authController = require('./controllers/authController');
 
+routes.post('/registeruser', authController.register);
+routes.post('/authuser', authController.authenticate);
 
 routes.use(authMiddleware)
 
